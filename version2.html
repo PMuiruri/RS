@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthcare Finnish with Rachael</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-semibold">Healthcare Finnish</h1>
+      <nav class="space-x-6">
+        <a href="#about" class="hover:text-green-400">About</a>
+        <a href="#courses" class="hover:text-green-400">Courses</a>
+        <a href="#contact" class="hover:text-green-400">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-green-50">
+    <div class="max-w-7xl mx-auto px-4 py-20 text-center">
+      <!-- Hero image -->
+      <img src="./Untitled2.jpg"
+           alt="Healthcare Finnish"
+           class="mx-auto rounded-full w-32 h-32 object-cover border-4 border-green-700 shadow-md">
+      <h2 class="text-4xl font-bold mt-6 text-green-800">Healthcare Finnish Language Courses</h2>
+      <p class="mt-4 text-gray-700 max-w-xl mx-auto">Advance your Finnish healthcare communication skills with a registered nurse with years of clinical and cultural experience in Finland.</p>
+      <button onclick="document.getElementById('buyForm').classList.remove('hidden')" class="mt-8 bg-green-700 text-white px-8 py-3 rounded shadow hover:bg-green-800">Buy a Course</button>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="max-w-5xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-8 items-center">
+    <div>
+      <h3 class="text-3xl font-bold text-green-800 mb-6">About Me</h3>
+      <div class="text-lg space-y-4">
+        <p>My name is Rachael. I am a registered nurse working in Accident and Emergency in Finland. I graduated in 2005 from JAMK University College of Health and Social Sciences.</p>
+        <p>Over the years, I have worked in various departments including elderly homes, geriatric wards, medical wards, emergency wards, cardiac wards, and mainly Accident and Emergency.</p>
+        <p>I have learned Finnish both through courses and self-study and hold certificates from JAMK and Helsinki University. I teach healthcare Finnish to health professionals who have completed basic Finnish courses (B2, C1, C2).</p>
+      </div>
+    </div>
+    <!-- About image -->
+    <img src="https://images.pexels.com/photos/5327920/pexels-photo-5327920.jpeg"
+         alt="Healthcare professional"
+         class="rounded-lg shadow-lg object-cover w-full h-80">
+  </section>
+
+  <!-- Courses Section -->
+  <section id="courses" class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <h3 class="text-3xl font-bold text-green-800 mb-6 text-center">Courses Offered</h3>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-green-50 rounded-lg p-6 shadow flex flex-col items-center text-center">
+          <img src="https://images.pexels.com/photos/305566/pexels-photo-305566.jpeg"
+               alt="Group learning"
+               class="rounded-lg mb-4 w-full h-40 object-cover">
+          <h4 class="text-xl font-semibold mb-2">Group Sessions (Online)</h4>
+          <p class="text-gray-700">€150 / 5 hours</p>
+          <p class="text-gray-700">€300 / 10 hours</p>
+        </div>
+        <div class="bg-green-50 rounded-lg p-6 shadow flex flex-col items-center text-center">
+          <img src="https://images.pexels.com/photos/4226122/pexels-photo-4226122.jpeg"
+               alt="One-on-one session"
+               class="rounded-lg mb-4 w-full h-40 object-cover">
+          <h4 class="text-xl font-semibold mb-2">Individual Sessions (Online)</h4>
+          <p class="text-gray-700">€40 / hour</p>
+        </div>
+        <div class="bg-green-50 rounded-lg p-6 shadow flex flex-col items-center text-center">
+          <img src="https://images.pexels.com/photos/4144096/pexels-photo-4144096.jpeg"
+               alt="Video learning"
+               class="rounded-lg mb-4 w-full h-40 object-cover">
+          <h4 class="text-xl font-semibold mb-2">Video Sessions (Coming Soon)</h4>
+          <p class="text-gray-700">Annual fee to access pre-recorded healthcare Finnish videos.</p>
+        </div>
+        <div class="bg-green-50 rounded-lg p-6 shadow flex flex-col items-center text-center">
+          <img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg"
+               alt="Printed materials"
+               class="rounded-lg mb-4 w-full h-40 object-cover">
+          <h4 class="text-xl font-semibold mb-2">Printed Materials / PDF Notes</h4>
+          <p class="text-gray-700">Available for purchase upon request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="max-w-5xl mx-auto px-4 py-16 text-center">
+    <h3 class="text-3xl font-bold text-green-800 mb-6">Contact</h3>
+    <p class="text-lg">Email: <a href="mailto:kijosundell@outlook.com" class="text-green-700">kijosundell@outlook.com</a></p>
+    <p class="text-lg">Phone: 044 0399390</p>
+  </section>
+
+  <!-- Buy Form Modal -->
+  <div id="buyForm" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg p-8 max-w-md w-full relative">
+      <button onclick="document.getElementById('buyForm').classList.add('hidden')" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+      <h3 class="text-2xl font-bold mb-4 text-green-800">Buy a Course</h3>
+      <form action="https://formspree.io/f/yourformid" method="POST" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium">Name</label>
+          <input type="text" name="name" required class="w-full border-gray-300 rounded px-3 py-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium">Email</label>
+          <input type="email" name="email" required class="w-full border-gray-300 rounded px-3 py-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium">Phone (optional)</label>
+          <input type="text" name="phone" class="w-full border-gray-300 rounded px-3 py-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium">Course Type</label>
+          <select name="course_type" required class="w-full border-gray-300 rounded px-3 py-2">
+            <option value="">Select</option>
+            <option value="Group 5h">Group 5h (€150)</option>
+            <option value="Group 10h">Group 10h (€300)</option>
+            <option value="Individual">Individual (€40/hour)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium">Message / Questions</label>
+          <textarea name="message" rows="3" class="w-full border-gray-300 rounded px-3 py-2"></textarea>
+        </div>
+        <button type="submit" class="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 w-full">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white mt-16">
+    <div class="max-w-7xl mx-auto px-4 py-6 text-center text-sm">
+      © 2025 Healthcare Finnish with Rachael
+    </div>
+  </footer>
+
+</body>
+</html>
