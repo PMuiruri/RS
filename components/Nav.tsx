@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations, useLocale } from 'next-intl'
-import { Link, usePathname } from '@/i18n/navigation'
+import { Link, usePathname } from '@/localeConfig/navigation'
 
 export default function Nav() {
   const t = useTranslations('Nav')
