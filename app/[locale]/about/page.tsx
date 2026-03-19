@@ -53,14 +53,12 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <span className="text-sm font-bold tracking-widest text-green-600">02</span>
             <h2 className="text-2xl font-bold">{t('clinicalTitle')}</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 gap-5">
             {[
               { icon: '🚨', title: t('clinical1Title'), body: t('clinical1Body') },
               { icon: '❤️', title: t('clinical2Title'), body: t('clinical2Body') },
               { icon: '🏥', title: t('clinical3Title'), body: t('clinical3Body') },
               { icon: '👴', title: t('clinical4Title'), body: t('clinical4Body') },
-              { icon: '🏠', title: t('clinical5Title'), body: t('clinical5Body') },
-              { icon: '🩺', title: t('clinical6Title'), body: t('clinical6Body') },
             ].map(({ icon, title, body }) => (
               <div key={title} className="bg-white rounded-2xl border border-gray-200 p-6">
                 <div className="text-2xl mb-3">{icon}</div>
