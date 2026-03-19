@@ -14,12 +14,17 @@ function ContactContent() {
     <>
       {/* Page header */}
       <section className="pt-32 pb-16 px-6 border-b border-gray-200 bg-linear-to-b from-green-50 to-white">
-        <div className="max-w-6xl mx-auto">
-          <span className="inline-block text-xs font-semibold tracking-widest uppercase text-green-700 mb-4">
-            {t('heroLabel')}
-          </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">{t('heroTitle')}</h1>
-          <p className="text-gray-600 text-lg max-w-lg leading-relaxed">{t('heroDesc')}</p>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <span className="inline-block text-xs font-semibold tracking-widest uppercase text-green-700 mb-4">
+              {t('heroLabel')}
+            </span>
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">{t('heroTitle')}</h1>
+            <p className="text-gray-600 text-lg leading-relaxed">{t('heroDesc')}</p>
+          </div>
+          <div className="mt-8 md:mt-0">
+            <img src="/hero-contact.jpg" alt="Healthcare professional" className="w-full h-56 md:h-72 object-cover rounded-2xl shadow-lg" />
+          </div>
         </div>
       </section>
 

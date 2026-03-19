@@ -18,8 +18,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">{t('heroTitle')}</h1>
             <p className="text-gray-600 text-lg leading-relaxed">{t('heroDesc')}</p>
           </div>
-          <div className="flex justify-center">
-            <div className="w-72 h-80 rounded-2xl bg-green-50 overflow-hidden border border-green-200 shadow-lg flex items-center justify-center">
+          <div className="flex justify-center mt-8 md:mt-0">
+            <div className="w-full max-w-xs md:w-80 h-72 md:h-96 rounded-2xl bg-green-50 overflow-hidden shadow-lg flex items-center justify-center">
               <ProfileImage fallbackSize="lg" />
             </div>
           </div>

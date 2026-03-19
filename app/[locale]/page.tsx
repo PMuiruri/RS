@@ -1,6 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/localeConfig/navigation'
-import ProfileImage from '@/components/ProfileImage'
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -16,7 +15,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <span className="inline-block text-xs font-semibold tracking-widest uppercase text-green-700 mb-6">
               {t('heroLabel')}
             </span>
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight text-gray-900">
+            <h1 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight text-gray-900">
               {t('heroTitle')}
             </h1>
             <p className="mt-6 text-lg text-gray-600 leading-relaxed max-w-md">{t('heroDesc')}</p>
@@ -35,13 +34,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               </Link>
             </div>
           </div>
-          <div className="flex justify-center">
-            <div className="relative">
-              <div className="w-72 h-72 rounded-2xl bg-green-50 overflow-hidden border border-green-200 shadow-lg">
-                <ProfileImage />
-              </div>
-              <div className="absolute -bottom-4 -right-4 bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-md text-sm font-medium text-gray-700">
-                🇫🇮&nbsp; {t('heroBadge')}
+          <div className="flex justify-center mt-8 md:mt-0">
+            <div className="w-full max-w-xs md:w-80">
+              <div className="w-full h-80 md:h-112 rounded-2xl overflow-hidden shadow-lg">
+                <img src="/hero-home.jpg" alt="Healthcare professional" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
