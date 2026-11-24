@@ -21,7 +21,7 @@ export default function ClientPage() {
           <span className="text-lg font-bold text-green-800">Rachael</span>
           <span className="text-xs bg-green-100 text-green-700 font-medium px-2 py-0.5 rounded-full">Student</span>
         </div>
-        <Link href="/en/login" className="text-sm text-gray-500 hover:text-gray-700">Sign out</Link>
+        <Link href="/login" className="text-sm text-gray-500 hover:text-gray-700">Sign out</Link>
       </header>
 
       <div className="max-w-4xl mx-auto px-6 py-10">
@@ -32,7 +32,7 @@ export default function ClientPage() {
         <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-6">
           <h2 className="font-semibold text-gray-900 mb-5">Upcoming sessions</h2>
           {sessions.length === 0 ? (
-            <p className="text-sm text-gray-400">No sessions booked yet. <Link href="/en/contact" className="text-green-700 hover:underline">Get in touch</Link> to sign up.</p>
+            <p className="text-sm text-gray-400">No sessions booked yet. <Link href="/#contact" className="text-green-700 hover:underline">Get in touch</Link> to sign up.</p>
           ) : (
             <div className="space-y-4">
               {sessions.map((s, i) => (
@@ -77,7 +77,7 @@ export default function ClientPage() {
         <div className="bg-green-800 rounded-2xl p-6 text-white">
           <p className="font-semibold mb-1">Need to reschedule or have a question?</p>
           <p className="text-green-200 text-sm mb-4">Get in touch and I will get back to you within 3 working days.</p>
-          <Link href="/en/contact" className="inline-block bg-white text-green-800 text-sm font-semibold px-4 py-2 rounded-xl hover:bg-green-50 transition-colors">
+          <Link href="/#contact" className="inline-block bg-white text-green-800 text-sm font-semibold px-4 py-2 rounded-xl hover:bg-green-50 transition-colors">
             Contact Rachael
           </Link>
         </div>

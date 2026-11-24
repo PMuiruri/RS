@@ -1,6 +1,8 @@
 import { defineRouting } from 'next-intl/routing'
 
 export const routing = defineRouting({
-  locales: ['en', 'fi'],
-  defaultLocale: 'en',
+  // Finnish is the main site. English is only shown when picked with the language switch.
+  locales: ['fi', 'en'],
+  defaultLocale: 'fi',
+  localeDetection: false,
 })

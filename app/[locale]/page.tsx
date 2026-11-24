@@ -85,7 +85,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="relative w-full max-w-sm mx-auto aspect-[3/4] rounded-[2rem] overflow-hidden shadow-sm">
             <Image
               src="/Untitled.jpg"
-              alt="Rachael, healthcare Finnish coach"
+              alt={t('altRachael')}
               fill
               priority
               sizes="(min-width: 768px) 384px, 90vw"
@@ -164,7 +164,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="mt-14 space-y-10 md:space-y-14">
             <OfferBlock
               image="/hero-courses.jpg"
-              imageAlt="Nurse in an online lesson"
+              imageAlt={t('altGroup')}
               price={tc('groupPrice')}
               title={tc('groupTitle')}
               body={tc('groupDesc')}
@@ -182,7 +182,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
             <OfferBlock
               image="/hero-home.jpg"
-              imageAlt="Smiling nurse"
+              imageAlt={t('altIndividual')}
               flip
               price={tc('indPrice')}
               title={tc('individualTitle')}
@@ -198,7 +198,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
             <OfferBlock
               image="/hero-contact.jpg"
-              imageAlt="Nurse's uniform with a paper heart"
+              imageAlt={t('altMaterials')}
               price={tc('pdfPrice')}
               title={tc('materialsTitle')}
               body={t('materialsSub')}

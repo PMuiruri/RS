@@ -91,7 +91,7 @@ export default function LoginPage() {
           <p className="text-center text-xs text-gray-400 mt-6">
             {role === 'client' ? (
               <>Don&apos;t have an account?{' '}
-                <Link href="/en/contact" className="text-green-700 hover:underline">Get in touch</Link>
+                <Link href="/#contact" className="text-green-700 hover:underline">Get in touch</Link>
               </>
             ) : (
               'Admin access only.'

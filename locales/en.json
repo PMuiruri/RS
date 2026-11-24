@@ -68,7 +68,11 @@
     "how4Body": "With patients and colleagues, on your very next shift.",
     "heroOr": "or send me a message",
     "whereLabel": "Where to start",
-    "whereTitle": "Here's how I can <em>help</em>"
+    "whereTitle": "Here's how I can <em>help</em>",
+    "altRachael": "Rachael, healthcare Finnish coach",
+    "altGroup": "Nurse in an online lesson",
+    "altIndividual": "Smiling nurse",
+    "altMaterials": "Paper heart in a nurse's pocket"
   },
   "About": {
     "heroLabel": "A little about me",
@@ -197,5 +201,9 @@
     "messagePlaceholder": "Your questions, or a little about where you work and what you find hard…",
     "submit": "Send message",
     "noSpam": "I read every message myself. No spam, ever."
+  },
+  "Meta": {
+    "title": "Healthcare Finnish with Rachael",
+    "description": "Specialised healthcare Finnish coaching for nurses, taught by a registered nurse working in Finnish A&E."
   }
 }

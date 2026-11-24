@@ -29,7 +29,7 @@ export default function AdminPage() {
           <span className="text-lg font-bold text-green-800">Rachael</span>
           <span className="text-xs bg-green-100 text-green-700 font-medium px-2 py-0.5 rounded-full">Admin</span>
         </div>
-        <Link href="/en/login" className="text-sm text-gray-500 hover:text-gray-700">Sign out</Link>
+        <Link href="/login" className="text-sm text-gray-500 hover:text-gray-700">Sign out</Link>
       </header>
 
       <div className="max-w-6xl mx-auto px-6 py-10">
