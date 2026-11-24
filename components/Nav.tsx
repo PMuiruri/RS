@@ -4,6 +4,9 @@ import { useState } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { Link, usePathname } from '@/localeConfig/navigation'
 
+// Login is hidden until client/admin accounts are ready. Set to true to show it again.
+const SHOW_LOGIN = false
+
 export default function Nav() {
   const t = useTranslations('Nav')
   const locale = useLocale()
@@ -41,12 +44,14 @@ export default function Nav() {
           >
             {locale === 'en' ? 'FI' : 'EN'}
           </Link>
-          <Link
-            href="/login"
-            className="hidden md:inline-block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-          >
-            Login
-          </Link>
+          {SHOW_LOGIN && (
+            <Link
+              href="/login"
+              className="hidden md:inline-block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              Login
+            </Link>
+          )}
           <Link
             href={{ pathname: '/', hash: 'contact' }}
             className="hidden md:inline-block bg-green-700 text-white text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-green-800 transition-colors"
@@ -80,13 +85,15 @@ export default function Nav() {
             </Link>
           ))}
           <div className="pt-3 space-y-2">
-            <Link
-              href="/login"
-              className="block text-center border border-gray-200 text-gray-700 text-sm font-medium px-5 py-3 rounded-lg hover:bg-gray-50 transition-colors"
-              onClick={() => setOpen(false)}
-            >
-              Login
-            </Link>
+            {SHOW_LOGIN && (
+              <Link
+                href="/login"
+                className="block text-center border border-gray-200 text-gray-700 text-sm font-medium px-5 py-3 rounded-lg hover:bg-gray-50 transition-colors"
+                onClick={() => setOpen(false)}
+              >
+                Login
+              </Link>
+            )}
             <Link
               href={{ pathname: '/', hash: 'contact' }}
               className="block text-center bg-green-700 text-white text-sm font-bold px-5 py-3 rounded-lg hover:bg-green-800 transition-colors"
