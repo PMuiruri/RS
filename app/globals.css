@@ -2,8 +2,11 @@
 
 @theme inline {
   --font-sans: var(--font-inter);
+  --font-serif: var(--font-lora);
+  --color-cream: #faf6ef;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
 }

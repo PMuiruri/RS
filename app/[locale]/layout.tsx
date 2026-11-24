@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Lora } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
@@ -9,6 +9,7 @@ import Footer from '@/components/Footer'
 import '../globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const lora = Lora({ subsets: ['latin'], style: ['normal', 'italic'], variable: '--font-lora' })
 
 export const metadata: Metadata = {
   title: 'Healthcare Finnish with Rachael',
@@ -38,7 +39,7 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} className={inter.variable}>
+    <html lang={locale} className={`${inter.variable} ${lora.variable}`}>
       <body className="bg-white text-gray-900 font-sans antialiased">
         <NextIntlClientProvider messages={messages}>
           <Nav />

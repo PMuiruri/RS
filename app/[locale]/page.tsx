@@ -1,215 +1,294 @@
+import { Suspense } from 'react'
+import Image from 'next/image'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/localeConfig/navigation'
+import ContactSection from '@/components/ContactSection'
+
+const container = 'max-w-5xl mx-auto'
+const primaryBtn =
+  'inline-block text-center bg-green-700 text-white text-sm font-bold px-6 py-3 rounded-full hover:bg-green-800 transition-colors'
+const textLink = 'text-sm font-semibold text-green-800 underline underline-offset-4 hover:text-green-950'
+
+// Renders <em>…</em> in translations as an italic green accent.
+const em = (chunks: React.ReactNode) => <em className="italic text-green-700">{chunks}</em>
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return <p className="text-xs font-semibold tracking-[0.2em] uppercase text-green-700 mb-3">{children}</p>
+}
+
+function Divider() {
+  return (
+    <div className="flex justify-center gap-2 py-2" aria-hidden>
+      <span className="w-1.5 h-1.5 rounded-full bg-green-300" />
+      <span className="w-1.5 h-1.5 rounded-full bg-green-300" />
+      <span className="w-1.5 h-1.5 rounded-full bg-green-300" />
+    </div>
+  )
+}
+
+function OfferBlock({
+  image,
+  imageAlt,
+  flip,
+  price,
+  title,
+  body,
+  features,
+  children,
+}: {
+  image: string
+  imageAlt: string
+  flip?: boolean
+  price: string
+  title: string
+  body: string
+  features: string[]
+  children: React.ReactNode
+}) {
+  return (
+    <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
+      <div className={`relative aspect-[4/3] rounded-3xl overflow-hidden ${flip ? 'md:order-2' : ''}`}>
+        <Image src={image} alt={imageAlt} fill sizes="(min-width: 768px) 480px, 100vw" className="object-cover" />
+      </div>
+      <div>
+        <p className="text-sm font-semibold text-green-700">{price}</p>
+        <h3 className="font-serif text-2xl md:text-3xl font-semibold mt-1">{title}</h3>
+        <p className="mt-3 text-gray-700 leading-relaxed">{body}</p>
+        <ul className="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-1.5 text-sm text-gray-700">
+          {features.map((f) => (
+            <li key={f} className="flex gap-2">
+              <span className="text-green-700">✓</span>
+              {f}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">{children}</div>
+      </div>
+    </div>
+  )
+}
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: 'Home' })
+  const ta = await getTranslations({ locale, namespace: 'About' })
+  const tc = await getTranslations({ locale, namespace: 'Courses' })
+
+  const signUp = (course: string) => ({ pathname: '/' as const, query: { course }, hash: 'contact' })
 
   return (
-    <>
-      {/* Hero */}
-      <section className="pt-32 pb-24 px-6 border-b border-gray-200 bg-gradient-to-b from-green-50 to-white">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <main>
+      {/* 1. About Rachael: warm welcome */}
+      <section id="about" className="bg-cream pt-24 pb-14 md:pb-20 px-4 md:px-6">
+        <div className={`${container} grid md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-8 md:gap-14 items-center`}>
+          <div className="relative w-full max-w-sm mx-auto aspect-[3/4] rounded-[2rem] overflow-hidden shadow-sm">
+            <Image
+              src="/Untitled.jpg"
+              alt="Rachael, healthcare Finnish coach"
+              fill
+              priority
+              sizes="(min-width: 768px) 384px, 90vw"
+              className="object-cover"
+            />
+          </div>
           <div>
-            <span className="inline-block text-xs font-semibold tracking-widest uppercase text-green-700 mb-6">
-              {t('heroLabel')}
-            </span>
-            <h1 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight text-gray-900">
-              {t('heroTitle')}
-            </h1>
-            <p className="mt-6 text-lg text-gray-600 leading-relaxed max-w-md">{t('heroDesc')}</p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                href="/courses"
-                className="bg-green-700 text-white font-bold px-7 py-3.5 rounded-lg hover:bg-green-800 transition-colors text-sm"
-              >
+            <Eyebrow>{t('heroLabel')}</Eyebrow>
+            <h1 className="font-serif text-4xl md:text-6xl font-semibold tracking-tight">{ta.rich('heroTitle', { em })}</h1>
+            <p className="font-serif mt-4 text-xl md:text-2xl text-gray-800 leading-snug">{t.rich('heroTitle', { em })}</p>
+            <p className="mt-5 text-gray-700 text-lg leading-relaxed">{ta('heroDesc')}</p>
+            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <Link href={{ pathname: '/', hash: 'courses' }} className={primaryBtn}>
                 {t('viewCourses')}
               </Link>
-              <Link
-                href="/contact"
-                className="border border-gray-300 text-gray-700 font-semibold px-7 py-3.5 rounded-lg hover:bg-gray-50 transition-colors text-sm"
-              >
-                {t('signUp')}
+              <Link href={{ pathname: '/', hash: 'contact' }} className={textLink}>
+                {t('heroOr')}
               </Link>
             </div>
           </div>
-          <div className="flex justify-center mt-8 md:mt-0">
-            <div className="w-full max-w-xs md:w-80">
-              <div className="w-full h-80 md:h-112 rounded-2xl overflow-hidden shadow-lg">
-                <img src="/hero-home.jpg" alt="Healthcare professional" className="w-full h-full object-cover" />
-              </div>
-            </div>
+        </div>
+
+        {/* Why learn with me + how I teach */}
+        <div className={`${container} mt-14 grid md:grid-cols-[3fr_2fr] gap-6`}>
+          <div className="bg-white rounded-3xl p-6 md:p-8">
+            <h2 className="font-serif text-2xl font-semibold mb-5">{t('whyTitle')}</h2>
+            <ul className="space-y-4">
+              {([1, 2, 3] as const).map((n) => (
+                <li key={n} className="flex gap-3">
+                  <span className="mt-1 w-6 h-6 shrink-0 rounded-full bg-green-100 text-green-800 text-xs font-bold flex items-center justify-center">
+                    {n}
+                  </span>
+                  <p className="text-gray-700 leading-relaxed">
+                    <span className="font-semibold text-gray-900">{t(`why${n}Title`)}.</span> {t(`why${n}Body`)}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
+          <figure className="bg-green-800 text-white rounded-3xl p-6 md:p-8 flex flex-col justify-center">
+            <figcaption className="text-xs font-semibold tracking-[0.2em] uppercase text-green-300 mb-3">
+              {ta('philLabel')}
+            </figcaption>
+            <blockquote className="font-serif italic text-xl leading-snug">&ldquo;{ta('philQuote')}&rdquo;</blockquote>
+            <p className="mt-4 text-green-100 text-sm leading-relaxed">{ta('philBody')}</p>
+          </figure>
         </div>
       </section>
 
-      {/* Trust bar */}
-      <section className="py-8 px-6 bg-green-900">
-        <div className="max-w-6xl mx-auto flex flex-wrap gap-6 md:gap-0 md:justify-between items-center text-sm text-white">
-          {(['trust1', 'trust2', 'trust3', 'trust4'] as const).map((key) => (
-            <div key={key} className="flex items-center gap-3">
-              <span className="text-green-400 font-bold text-base">✓</span>
-              <span>{t(key)}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 01: Who is this for */}
-      <section className="py-24 px-6 border-b border-gray-200">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-baseline gap-4 mb-12">
-            <span className="text-sm font-bold tracking-widest text-green-600">01</span>
-            <h2 className="text-3xl font-bold tracking-tight">{t('whoTitle')}</h2>
+      {/* 2. Courses */}
+      <section id="courses" className="py-14 md:py-20 px-4 md:px-6">
+        <div className={container}>
+          <div className="text-center max-w-2xl mx-auto">
+            <Eyebrow>{t('whereLabel')}</Eyebrow>
+            <h2 className="font-serif text-3xl md:text-4xl font-semibold">{t.rich('whereTitle', { em })}</h2>
+            <p className="mt-3 text-gray-700">{tc('heroDesc')}</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { icon: '🏥', title: t('who1Title'), body: t('who1Body') },
-              { icon: '🎓', title: t('who2Title'), body: t('who2Body') },
-              { icon: '🌍', title: t('who3Title'), body: t('who3Body') },
-            ].map(({ icon, title, body }) => (
-              <div key={title} className="bg-green-50 rounded-2xl p-8 border border-green-100">
-                <div className="text-3xl mb-4">{icon}</div>
-                <h3 className="text-lg font-semibold mb-2">{title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
+
+          {/* Who it's for */}
+          <div className="mt-10 grid md:grid-cols-3 gap-4">
+            {([
+              ['🏥', 1],
+              ['🎓', 2],
+              ['🌍', 3],
+            ] as const).map(([icon, n]) => (
+              <div key={n} className="bg-cream rounded-2xl p-5">
+                <p className="font-semibold">
+                  <span className="mr-2">{icon}</span>
+                  {t(`who${n}Title`)}
+                </p>
+                <p className="mt-1 text-sm text-gray-700 leading-relaxed">{t(`who${n}Body`)}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* 02: Why Rachael */}
-      <section className="py-24 px-6 border-b border-gray-200 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-baseline gap-4 mb-12">
-            <span className="text-sm font-bold tracking-widest text-green-600">02</span>
-            <h2 className="text-3xl font-bold tracking-tight">{t('whyTitle')}</h2>
+          <div className="mt-14 space-y-10 md:space-y-14">
+            <OfferBlock
+              image="/hero-courses.jpg"
+              imageAlt="Nurse in an online lesson"
+              price={tc('groupPrice')}
+              title={tc('groupTitle')}
+              body={tc('groupDesc')}
+              features={(['gFeature1', 'gFeature2', 'gFeature3', 'gFeature4', 'gFeature5'] as const).map((k) => tc(k))}
+            >
+              <Link href={signUp('group-10h')} className={primaryBtn}>
+                {tc('fullBtn')}
+              </Link>
+              <Link href={signUp('group-5h')} className={textLink}>
+                {tc('starterBtn')}
+              </Link>
+            </OfferBlock>
+
+            <Divider />
+
+            <OfferBlock
+              image="/hero-home.jpg"
+              imageAlt="Smiling nurse"
+              flip
+              price={tc('indPrice')}
+              title={tc('individualTitle')}
+              body={tc('individualDesc')}
+              features={(['iFeature1', 'iFeature2', 'iFeature3', 'iFeature4', 'iFeature5'] as const).map((k) => tc(k))}
+            >
+              <Link href={signUp('individual')} className={primaryBtn}>
+                {tc('indBtn')}
+              </Link>
+            </OfferBlock>
+
+            <Divider />
+
+            <OfferBlock
+              image="/hero-contact.jpg"
+              imageAlt="Nurse's uniform with a paper heart"
+              price={tc('pdfPrice')}
+              title={tc('materialsTitle')}
+              body={t('materialsSub')}
+              features={[`${tc('pdfTitle')}: ${tc('pdfDesc')}`, `${tc('videoTitle')} (${tc('videoComingSoon')}): ${tc('videoDesc')}`]}
+            >
+              <Link href={signUp('pdf')} className={primaryBtn}>
+                {tc('pdfBtn')}
+              </Link>
+              <Link href={signUp('video')} className={textLink}>
+                {tc('videoBtn')}
+              </Link>
+            </OfferBlock>
           </div>
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              {[
-                { n: 1, title: t('why1Title'), body: t('why1Body') },
-                { n: 2, title: t('why2Title'), body: t('why2Body') },
-                { n: 3, title: t('why3Title'), body: t('why3Body') },
-              ].map(({ n, title, body }) => (
-                <div key={n} className="flex gap-5">
-                  <div className="w-10 h-10 rounded-full bg-green-700 shrink-0 flex items-center justify-center text-white text-sm font-bold shadow-sm">
+
+          <p className="mt-10 text-center text-sm font-semibold text-green-800">{tc('prereq')}</p>
+
+          {/* How it works */}
+          <div className="mt-14 bg-cream rounded-3xl p-6 md:p-10">
+            <h3 className="font-serif text-2xl font-semibold text-center mb-8">{t('howTitle')}</h3>
+            <ol className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {([1, 2, 3, 4] as const).map((n) => (
+                <li key={n} className="text-center">
+                  <div className="w-10 h-10 rounded-full bg-green-700 text-white font-serif text-lg flex items-center justify-center mx-auto mb-3">
                     {n}
                   </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">{title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
-                  </div>
-                </div>
+                  <p className="font-semibold">{t(`how${n}Title`)}</p>
+                  <p className="mt-1 text-sm text-gray-700">{t(`how${n}Body`)}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          {/* FAQ */}
+          <div className="mt-14 max-w-3xl mx-auto">
+            <h3 className="font-serif text-2xl font-semibold text-center mb-6">{tc('faqTitle')}</h3>
+            <div className="divide-y divide-gray-200 border-y border-gray-200">
+              {([1, 2, 3, 4] as const).map((n) => (
+                <details key={n} className="group py-4">
+                  <summary className="flex justify-between gap-4 cursor-pointer list-none font-semibold">
+                    {tc(`faq${n}Q`)}
+                    <span className="text-green-700 transition-transform group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="mt-2 text-gray-700 leading-relaxed">{tc(`faq${n}A`)}</p>
+                </details>
               ))}
             </div>
-            <div className="bg-white rounded-2xl p-10 border border-gray-200 border-l-4 border-l-green-700 shadow-sm">
-              <blockquote className="text-gray-700 text-lg leading-relaxed italic">
-                &ldquo;{t('quote')}&rdquo;
-              </blockquote>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-800 font-bold">
-                  R
-                </div>
-                <div>
-                  <p className="font-semibold text-sm">Rachael</p>
-                  <p className="text-gray-500 text-xs">{t('quoteRole')}</p>
-                </div>
-              </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. CV */}
+      <section id="experience" className="bg-cream py-14 md:py-20 px-4 md:px-6">
+        <div className={container}>
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <Eyebrow>{ta('cvLabel')}</Eyebrow>
+            <h2 className="font-serif text-3xl md:text-4xl font-semibold">{ta.rich('cvTitle', { em })}</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-3xl p-6 md:p-8">
+              <h3 className="font-serif text-xl font-semibold mb-5">{ta('clinicalTitle')}</h3>
+              <ol className="relative border-l-2 border-green-100 ml-1.5 space-y-5">
+                {([1, 2, 3, 4] as const).map((n) => (
+                  <li key={n} className="pl-5 relative">
+                    <span className="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-green-600" />
+                    <p className="font-semibold">{ta(`clinical${n}Title`)}</p>
+                    <p className="text-sm text-gray-700">{ta(`clinical${n}Body`)}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div className="bg-white rounded-3xl p-6 md:p-8">
+              <h3 className="font-serif text-xl font-semibold mb-5">{ta('qualTitle')}</h3>
+              <ol className="relative border-l-2 border-green-100 ml-1.5 space-y-5">
+                {([1, 2, 3, 4] as const).map((n) => (
+                  <li key={n} className="pl-5 relative">
+                    <span className="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-green-600" />
+                    <p className="font-semibold">{ta(`qual${n}Title`)}</p>
+                    <p className="text-sm text-gray-700">{ta(`qual${n}Sub`)}</p>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 03: Courses */}
-      <section className="py-24 px-6 border-b border-gray-200">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-baseline gap-4 mb-4">
-            <span className="text-sm font-bold tracking-widest text-green-600">03</span>
-            <h2 className="text-3xl font-bold tracking-tight">{t('coursesTitle')}</h2>
-          </div>
-          <p className="text-gray-600 mb-12 ml-10">{t('coursesSub')}</p>
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Group */}
-            <div className="rounded-2xl border border-gray-200 p-8 hover:border-green-600 hover:shadow-md transition-all">
-              <h3 className="font-bold text-lg mb-1">{t('groupTitle')}</h3>
-              <p className="text-gray-500 text-sm mb-6">{t('groupSub')}</p>
-              <div className="space-y-2 mb-8 text-sm text-gray-600">
-                <p><span className="font-semibold text-gray-900">€150</span> — 5h</p>
-                <p><span className="font-semibold text-gray-900">€300</span> — 10h</p>
-              </div>
-              <ul className="text-sm text-gray-600 space-y-2 mb-8">
-                {(['groupFeature1', 'groupFeature2', 'groupFeature3'] as const).map((k) => (
-                  <li key={k} className="flex gap-2"><span className="text-green-700 font-semibold">✓</span>{t(k)}</li>
-                ))}
-              </ul>
-              <Link href="/courses" className="block text-center bg-green-700 text-white text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-green-800 transition-colors">
-                {t('signUpBtn')}
-              </Link>
-            </div>
-            {/* 1-on-1 */}
-            <div className="rounded-2xl border-2 border-green-700 p-8 shadow-lg relative bg-green-50/40">
-              <span className="absolute -top-3 left-6 bg-green-700 text-white text-xs font-bold px-3 py-1 rounded-full">
-                {t('individualBadge')}
-              </span>
-              <h3 className="font-bold text-lg mb-1">{t('individualTitle')}</h3>
-              <p className="text-gray-500 text-sm mb-6">{t('individualSub')}</p>
-              <div className="mb-8 text-sm text-gray-600">
-                <p><span className="font-semibold text-gray-900">€40</span> / h</p>
-              </div>
-              <ul className="text-sm text-gray-600 space-y-2 mb-8">
-                {(['indFeature1', 'indFeature2', 'indFeature3'] as const).map((k) => (
-                  <li key={k} className="flex gap-2"><span className="text-green-700 font-semibold">✓</span>{t(k)}</li>
-                ))}
-              </ul>
-              <Link href="/courses" className="block text-center bg-green-700 text-white text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-green-800 transition-colors">
-                {t('signUpBtn')}
-              </Link>
-            </div>
-            {/* Materials */}
-            <div className="rounded-2xl border border-gray-200 p-8 hover:border-green-600 hover:shadow-md transition-all">
-              <h3 className="font-bold text-lg mb-1">{t('materialsTitle')}</h3>
-              <p className="text-gray-500 text-sm mb-6">{t('materialsSub')}</p>
-              <div className="mb-8 text-sm text-gray-600"><p>{t('materialsPrice')}</p></div>
-              <ul className="text-sm text-gray-600 space-y-2 mb-8">
-                {(['matFeature1', 'matFeature2', 'matFeature3'] as const).map((k) => (
-                  <li key={k} className="flex gap-2"><span className="text-green-700 font-semibold">✓</span>{t(k)}</li>
-                ))}
-              </ul>
-              <Link href="/contact" className="block text-center border border-gray-300 text-gray-700 text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-gray-50 transition-colors">
-                {t('getInTouch')}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 04: How it works */}
-      <section className="py-24 px-6 border-b border-gray-200 bg-green-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-baseline gap-4 mb-12">
-            <span className="text-sm font-bold tracking-widest text-green-600">04</span>
-            <h2 className="text-3xl font-bold tracking-tight">{t('howTitle')}</h2>
-          </div>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { n: 1, title: t('how1Title'), body: t('how1Body') },
-              { n: 2, title: t('how2Title'), body: t('how2Body') },
-              { n: 3, title: t('how3Title'), body: t('how3Body') },
-              { n: 4, title: t('how4Title'), body: t('how4Body') },
-            ].map(({ n, title, body }) => (
-              <div key={n} className="text-center">
-                <div className="w-12 h-12 rounded-full bg-green-700 text-white flex items-center justify-center font-bold mx-auto mb-4 shadow-sm">
-                  {n}
-                </div>
-                <h3 className="font-semibold text-sm mb-2">{title}</h3>
-                <p className="text-gray-600 text-xs leading-relaxed">{body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
+      {/* 4. Contact */}
+      <Suspense>
+        <ContactSection />
+      </Suspense>
+    </main>
   )
 }

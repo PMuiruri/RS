@@ -11,26 +11,23 @@ export default function Nav() {
   const [open, setOpen] = useState(false)
 
   const links = [
-    { href: '/about' as const, label: t('about') },
-    { href: '/courses' as const, label: t('courses') },
-    { href: '/contact' as const, label: t('contact') },
+    { hash: 'about', label: t('about') },
+    { hash: 'courses', label: t('courses') },
+    { hash: 'experience', label: t('cv') },
+    { hash: 'contact', label: t('contact') },
   ]
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="text-lg font-bold tracking-tight text-gray-900" onClick={() => setOpen(false)}>
+      <div className="max-w-5xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+        <Link href="/" className="font-serif text-xl font-semibold text-gray-900" onClick={() => setOpen(false)}>
           Healthcare Finnish
         </Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-          {links.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={pathname === href ? 'text-gray-900 border-b-2 border-green-700 pb-0.5' : 'hover:text-gray-900 transition-colors'}
-            >
+          {links.map(({ hash, label }) => (
+            <Link key={hash} href={{ pathname: '/', hash }} className="hover:text-gray-900 transition-colors">
               {label}
             </Link>
           ))}
@@ -45,7 +42,13 @@ export default function Nav() {
             {locale === 'en' ? 'FI' : 'EN'}
           </Link>
           <Link
-            href="/contact"
+            href="/login"
+            className="hidden md:inline-block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+          >
+            Login
+          </Link>
+          <Link
+            href={{ pathname: '/', hash: 'contact' }}
             className="hidden md:inline-block bg-green-700 text-white text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-green-800 transition-colors"
           >
             {t('signUp')}
@@ -65,20 +68,27 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-gray-200 bg-white px-6 py-4 space-y-1">
-          {links.map(({ href, label }) => (
+        <div className="md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-1">
+          {links.map(({ hash, label }) => (
             <Link
-              key={href}
-              href={href}
-              className={`block py-3 text-sm font-medium border-b border-gray-100 ${pathname === href ? 'text-green-700 font-bold' : 'text-gray-700'}`}
+              key={hash}
+              href={{ pathname: '/', hash }}
+              className="block py-3 text-sm font-medium border-b border-gray-100 text-gray-700"
               onClick={() => setOpen(false)}
             >
               {label}
             </Link>
           ))}
-          <div className="pt-3">
+          <div className="pt-3 space-y-2">
             <Link
-              href="/contact"
+              href="/login"
+              className="block text-center border border-gray-200 text-gray-700 text-sm font-medium px-5 py-3 rounded-lg hover:bg-gray-50 transition-colors"
+              onClick={() => setOpen(false)}
+            >
+              Login
+            </Link>
+            <Link
+              href={{ pathname: '/', hash: 'contact' }}
               className="block text-center bg-green-700 text-white text-sm font-bold px-5 py-3 rounded-lg hover:bg-green-800 transition-colors"
               onClick={() => setOpen(false)}
             >
