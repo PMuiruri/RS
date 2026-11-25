@@ -10,8 +10,8 @@
     "rights": "© 2025 Rachael — All rights reserved"
   },
   "Home": {
-    "heroLabel": "Finnish lessons for nurses",
-    "heroTitle": "I am a nurse and I teach other nurses healthcare Finnish.",
+    "heroLabel": "Finnish lessons for healthcare professionals",
+    "heroTitle": "I am a nurse and I teach healthcare Finnish to professionals and students in the field.",
     "heroDesc": "I'm Rachael, a registered nurse in Finnish A&E and a language coach. I teach the Finnish you actually need on shift: with patients, with colleagues and in your notes.",
     "viewCourses": "See courses",
     "signUp": "Sign Up",
@@ -21,11 +21,11 @@
     "trust3": "Small groups and 1-on-1, online",
     "trust4": "I'm a practising nurse",
     "whoTitle": "Is this for you?",
-    "who1Title": "Nurses working in Finland",
-    "who1Body": "You already work in Finnish healthcare or you are starting soon.",
-    "who2Title": "Finnish at B2 level or above",
-    "who2Body": "You speak Finnish but want more confidence in patient situations and handovers.",
-    "who3Title": "Nurses trained abroad",
+    "who1Title": "Healthcare professionals",
+    "who1Body": "You work in Finnish healthcare or you are starting soon.",
+    "who2Title": "Students in the field",
+    "who2Body": "You study in the healthcare field and want to prepare for placements and working life.",
+    "who3Title": "Professionals trained abroad",
     "who3Body": "You have come to work in Finland and you are learning the language and practices of a Finnish workplace.",
     "whyTitle": "What I bring to my teaching",
     "why1Title": "Work experience from A&E",
@@ -77,7 +77,7 @@
   "About": {
     "heroLabel": "A little about me",
     "heroTitle": "Hi, I'm <em>Rachael</em>",
-    "heroDesc": "I work in A&E in Finland. My courses are for nurses who already speak Finnish but want more confidence in work situations: with patients, in handovers and in documentation.",
+    "heroDesc": "I work in A&E in Finland. My courses are for healthcare professionals and students who want to be more confident with their Finnish in work situations: with patients, in handovers and in documentation.",
     "bgTitle": "Background",
     "bgP1": "I graduated in 2005 from JAMK University of Applied Sciences in Jyväskylä.",
     "bgP2": "I have worked in elderly care, geriatric wards, medical wards, cardiac units, and emergency departments.",
@@ -111,9 +111,9 @@
   "Courses": {
     "heroLabel": "Online courses",
     "heroTitle": "My courses",
-    "heroDesc": "All lessons are online, so you can take part alongside shift work. The courses are for nurses whose Finnish is at least at B2 level.",
+    "heroDesc": "All lessons are online, so you can take part alongside work or studies. The courses are for healthcare professionals and students whose Finnish is at least at B2 level.",
     "groupTitle": "Small group",
-    "groupDesc": "A group of up to six, where you practise together with other nurses.",
+    "groupDesc": "A group of up to six, where you practise together with others from the field.",
     "gFeature1": "Up to 6 participants",
     "gFeature2": "Vocabulary used on the ward",
     "gFeature3": "Talking with patients and relatives",
@@ -149,10 +149,10 @@
     "videoComingSoon": "Coming later",
     "videoDesc": "Recorded lessons to watch at your own pace.",
     "videoSub": "Yearly subscription",
-    "videoBtn": "Register your interest",
+    "videoBtn": "Join the waiting list",
     "faqTitle": "Frequently asked questions",
     "faq1Q": "What level of Finnish do I need?",
-    "faq1A": "The courses are for nurses whose Finnish is at least at B2 level. If you are not sure about your level, you can book a free introductory call.",
+    "faq1A": "The courses are for healthcare professionals and students whose Finnish is at least at B2 level. If you are not sure about your level, you can book a free introductory call.",
     "faq2Q": "How are lessons held?",
     "faq2A": "All lessons are online in Zoom or Teams. You need a working internet connection and a quiet place.",
     "faq3Q": "Can I take both group and private lessons?",
@@ -204,6 +204,6 @@
   },
   "Meta": {
     "title": "Healthcare Finnish with Rachael",
-    "description": "Online Finnish lessons for nurses, taught by a registered nurse working in A&E in Finland."
+    "description": "Online Finnish lessons for healthcare professionals and students, taught by a registered nurse working in A&E in Finland."
   }
 }

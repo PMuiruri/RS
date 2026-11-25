@@ -10,8 +10,8 @@
     "rights": "© 2025 Rachael — Kaikki oikeudet pidätetään"
   },
   "Home": {
-    "heroLabel": "Suomen kielen opetusta sairaanhoitajille",
-    "heroTitle": "Olen sairaanhoitaja ja opetan hoitotyön suomea muille sairaanhoitajille.",
+    "heroLabel": "Suomen kielen opetusta terveydenhuollon ammattilaisille",
+    "heroTitle": "Olen sairaanhoitaja ja opetan terveydenhuollon suomea alan ammattilaisille ja opiskelijoille.",
     "heroDesc": "Olen Rachael, sairaanhoitaja suomalaisella päivystyksellä ja kielivalmentaja. Opetan sitä suomea, jota oikeasti tarvitset työvuorossa: potilaiden ja kollegoiden kanssa sekä kirjaamisessa.",
     "viewCourses": "Katso kurssit",
     "signUp": "Ilmoittaudu",
@@ -21,11 +21,11 @@
     "trust3": "Pienryhmät ja yksilötunnit verkossa",
     "trust4": "Olen itse työssä oleva sairaanhoitaja",
     "whoTitle": "Onko tämä sinulle?",
-    "who1Title": "Suomessa työskentelevät sairaanhoitajat",
-    "who1Body": "Työskentelet jo suomalaisessa terveydenhuollossa tai olet aloittamassa.",
-    "who2Title": "Suomen kielen taito B2 tai parempi",
-    "who2Body": "Puhut suomea, mutta haluat varmuutta potilastilanteisiin ja raportointiin.",
-    "who3Title": "Ulkomailla koulutetut hoitajat",
+    "who1Title": "Terveydenhuollon ammattilaiset",
+    "who1Body": "Työskentelet suomalaisessa terveydenhuollossa tai olet aloittamassa.",
+    "who2Title": "Alan opiskelijat",
+    "who2Body": "Opiskelet terveydenhuoltoalalla ja haluat valmistautua harjoitteluun ja työelämään.",
+    "who3Title": "Ulkomailla koulutetut ammattilaiset",
     "who3Body": "Olet tullut Suomeen töihin ja opettelet suomalaisen työpaikan kieltä ja käytäntöjä.",
     "whyTitle": "Mitä tuon opetukseen",
     "why1Title": "Työkokemus päivystyksestä",
@@ -77,7 +77,7 @@
   "About": {
     "heroLabel": "Vähän minusta",
     "heroTitle": "Hei, olen <em>Rachael</em>",
-    "heroDesc": "Työskentelen päivystyksessä. Kurssini on tarkoitettu hoitajille, jotka jo puhuvat suomea mutta haluavat lisää varmuutta työtilanteisiin – potilaan kanssa, raportilla ja kirjaamisessa.",
+    "heroDesc": "Työskentelen päivystyksessä. Kurssini on tarkoitettu terveydenhuollon ammattilaisille ja alan opiskelijoille, jotka haluavat käyttää suomea työtilanteissa varmemmin – potilaan kanssa, raportilla ja kirjaamisessa.",
     "bgTitle": "Tausta",
     "bgP1": "Valmistuin vuonna 2005 Jyväskylän ammattikorkeakoulusta.",
     "bgP2": "Olen työskennellyt vanhustenhoidossa, geriatrialla, sisätautiosastoilla, sydänosastolla ja päivystyksessä.",
@@ -111,9 +111,9 @@
   "Courses": {
     "heroLabel": "Verkkokurssit",
     "heroTitle": "Kurssini",
-    "heroDesc": "Kaikki tunnit pidetään verkossa, joten voit osallistua niihin vuorotyön ohessa. Kurssit on tarkoitettu hoitajille, joiden suomen kielen taito on vähintään B2-tasoa.",
+    "heroDesc": "Kaikki tunnit pidetään verkossa, joten voit osallistua niihin työn tai opiskelun ohessa. Kurssit on tarkoitettu terveydenhuollon ammattilaisille ja alan opiskelijoille, joiden suomen kielen taito on vähintään B2-tasoa.",
     "groupTitle": "Pienryhmä",
-    "groupDesc": "Enintään kuuden hengen ryhmä, jossa harjoitellaan yhdessä muiden hoitajien kanssa.",
+    "groupDesc": "Enintään kuuden hengen ryhmä, jossa harjoitellaan yhdessä muiden alan ihmisten kanssa.",
     "gFeature1": "Enintään 6 osallistujaa",
     "gFeature2": "Osastolla tarvittava sanasto",
     "gFeature3": "Keskustelu potilaan ja omaisten kanssa",
@@ -149,10 +149,10 @@
     "videoComingSoon": "Tulossa",
     "videoDesc": "Tallennettuja tunteja, joita voi katsoa omaan tahtiin.",
     "videoSub": "Vuositilaus",
-    "videoBtn": "Ilmoita kiinnostuksesi",
+    "videoBtn": "Liity odotuslistalle",
     "faqTitle": "Usein kysyttyä",
     "faq1Q": "Millainen kielitaito tarvitaan?",
-    "faq1A": "Kurssit on tarkoitettu hoitajille, joiden suomen kielen taito on vähintään B2-tasoa. Jos et ole varma tasostasi, voit varata maksuttoman tutustumispuhelun.",
+    "faq1A": "Kurssit on tarkoitettu terveydenhuollon ammattilaisille ja alan opiskelijoille, joiden suomen kielen taito on vähintään B2-tasoa. Jos et ole varma tasostasi, voit varata maksuttoman tutustumispuhelun.",
     "faq2Q": "Miten tunnit pidetään?",
     "faq2A": "Kaikki tunnit pidetään verkossa Zoomissa tai Teamsissa. Tarvitset toimivan nettiyhteyden ja rauhallisen paikan.",
     "faq3Q": "Voinko osallistua sekä ryhmä- että yksityistunneille?",
@@ -203,7 +203,7 @@
     "noSpam": "Luen kaikki viestit itse."
   },
   "Meta": {
-    "title": "Hoitotyön suomi – Rachael",
-    "description": "Suomen kielen opetusta sairaanhoitajille verkossa. Opettajana päivystyksessä työskentelevä sairaanhoitaja."
+    "title": "Terveydenhuollon suomea – Rachael",
+    "description": "Suomen kielen opetusta terveydenhuollon ammattilaisille ja alan opiskelijoille verkossa. Opettajana päivystyksessä työskentelevä sairaanhoitaja."
   }
 }

@@ -56,7 +56,7 @@ export default function ContactSection() {
                 <Icon d={icons.phone} />
                 <div>
                   <p className="font-semibold text-sm">{t('phoneLabel')}</p>
-                  <a href="tel:+358440399390" className="text-green-700 hover:underline text-sm">044 039 9390</a>
+                  <a href="tel:+358458642080" className="text-green-700 hover:underline text-sm">+358 45 864 2080</a>
                 </div>
               </div>
               <div className="flex gap-4 items-start">
