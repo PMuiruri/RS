@@ -146,14 +146,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
           {/* Who it's for */}
           <div className="mt-10 grid md:grid-cols-3 gap-4">
-            {([
-              ['🏥', 1],
-              ['🎓', 2],
-              ['🌍', 3],
-            ] as const).map(([icon, n]) => (
+            {([1, 2, 3] as const).map((n) => (
               <div key={n} className="bg-cream rounded-2xl p-5">
                 <p className="font-semibold">
-                  <span className="mr-2">{icon}</span>
                   {t(`who${n}Title`)}
                 </p>
                 <p className="mt-1 text-sm text-gray-700 leading-relaxed">{t(`who${n}Body`)}</p>
